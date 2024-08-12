@@ -1,0 +1,53 @@
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    eureka-service-url-poll-interval-seconds: 35
+  instance:
+    preferIpAddress: true
+
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///C:/Users/last/IdeaProjects/kata-advanced/local-config/ms-config-properties/{application}/{profile}/
+
+#server:
+#  port: 8888
+#spring:
+#  application:
+#    name: config-server
+#  profiles:
+#    active: native
+#---
+#server:
+#  config:
+#    activate:
+#      on-profile: native
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: file:\\\C:\Users\last\IdeaProjects\kata-advanced\local-config\ms-config-properties\{application}\{profile}
+#---
+#server:
+#  config:
+#    activate:
+#      on-profile: git
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          search-searchPaths: file:\\\C:\Users\last\IdeaProjects\kata-advanced\local-config\ms-config-properties\{application}/{profile}
+
+
+

@@ -1,0 +1,24 @@
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka} # 1 укажите явный маршрут к серверу eureka (serviceUrl)
+    eureka-service-url-poll-interval-seconds: 35 # 3 укажите интервал в 35 сек через который клиент шлет эхо запрос на сервер
+  instance:
+    preferIpAddress: true # 2 использовать IP адрес
+
+spring:
+  application:
+    name: test-service
+  profiles:
+    active: dev
+  config:
+    import: "configserver:"
+  cloud:
+    config:
+#      uri: http://localhost:8888
+      enabled: true
+      discovery:
+        enabled: true
+        service-id: config-server
